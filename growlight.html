@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adjustable Light Icon</title>
+    <style>
+        /* Styling for the light icon */
+        .light-icon {
+            width: 100px;
+            height: 100px;
+            background-color: #f1c40f;
+            border-radius: 50%;
+            margin: 20px auto;
+            box-shadow: 0 0 20px #f1c40f;
+        }
+
+        /* Styling for the slider */
+        .slider {
+            width: 80%;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="light-icon" id="light-icon"></div>
+    <input type="range" min="0" max="100" value="50" class="slider" id="light-slider">
+
+    <script>
+        // Get the light icon and the slider element
+        const lightIcon = document.getElementById('light-icon');
+        const lightSlider = document.getElementById('light-slider');
+
+        // Update the light icon based on the slider value
+        function updateLight() {
+            const brightness = lightSlider.value;
+            const brightnessPercentage = brightness + '%';
+            lightIcon.style.boxShadow = `0 0 ${20 + brightness / 5}px rgba(241, 196, 15, ${brightness / 100})`;
+        }
+
+        // Add event listener to the slider
+        lightSlider.addEventListener('input', updateLight);
+
+        // Initially update the light icon
+        updateLight();
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Garden Project</title>
+    <style>
+        /* CSS code for centering the heading */
+
+        .title {
+            text-align: center;
+        }
+        /* CSS code for layout */
+        .headers {
+            display: flex; /* Create a flex container */
+            justify-content: space-between; /* Distribute space evenly between headings */
+        }
+
+        .heading {
+            text-align: center; /* Center text horizontally */
+        }
+        /* Here's where the code for the switch is...*/
+        .switchcontainer {
+            position: absolute; /* Position the container relative to the document */
+            top: 200px; /* Adjust top position */
+            left: 50%; /* Center the switch horizontally */
+            transform: translateX(-50%); /* Center horizontally */
+        }
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider {
+            position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            border-radius: 34px;
+            cursor: pointer;
+            background-color: #ccc;
+            -webkit-transition: .4s; transition: .4s;
+        }
+        .slider:before {
+            position: absolute; height: 26px; width: 26px; left: 4px; bottom: 4px;
+            content: "";
+            border-radius: 50%;
+            background-color: white;
+            -webkit-transition: .4s; transition: .4s;
+        }
+        input:checked + .slider {
+            background-color: #2196F3;
+        }
+        input:checked + .slider:before {
+            -webkit-transform: translateX(26px);
+            -ms-transform: translateX(26px);
+            transform: translateX(26px);
+        }
+    </style>
+</head>
+<body>
+<!--Heres where all the headings go. Reference our design proposal's drawing-->
+<h1 class = "title">Garden Monitor</h1>
+<div class = "headers">
+    <h2 class = "heading">Air Temperature</h2>
+    <h2 class = "heading">Moisture Level</h2>
+    <h2 class = "heading">Light Level</h2>
+</div>
+<!--I'm trying to add a switch here-->
+<div class = switchcontainer>
+<label class="switch">
+    <input type="checkbox">
+    <span class="slider round"></span>
+    </label>
+</div>
+</body>
+</html>

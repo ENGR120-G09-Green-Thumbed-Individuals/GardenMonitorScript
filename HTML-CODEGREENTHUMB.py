@@ -6,8 +6,8 @@ import _thread
 import json 
 
 # Define the IR emitter and Red LED (in this code Red LED is sometimes called as buzzer) pins
-ir_emitter_pin = machine.Pin(15, machine.Pin.OUT)
-redLED_pin = machine.Pin(14, machine.Pin.OUT)
+ir_emitter_pin = machine.Pin(15, machine.Pin.OUT) #should rename and introduce other sensors (soil_temp, air_temp, ambient_light)
+redLED_pin = machine.Pin(14, machine.Pin.OUT) #redLED will be renamed to blueLED to be acuator when plants being watered. 
 redLED_status = "Off"
 
 # Function to control the IR emitter
