@@ -1,23 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Garden Project</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
     <style>
-        /* CSS code for centering the heading */
-
-        .title {
+        .title{
             text-align: center;
         }
-        /* CSS code for layout */
-        .headers {
-            display: flex; /* Create a flex container */
-            justify-content: space-between; /* Distribute space evenly between headings */
+        /* Here's the code for the info boxes which will have our temps and sunniness */
+        .infoboxes{
+            display: absolute;
+            justify-content: center;
+            align-items: flex-start;
+            flex-wrap: wrap; /* Allow items to wrap to the next line */
+        }
+        .box {
+            width: 30%; /* Set the width of each box */
+            height: 30%; /* Set the height of each box */
+            background-color: #f0f0f0; /* Set the background color of each box */
+            border: 1px solid #ccc; /* Add border for each box */
+            margin-right: 20px; /* Add margin between boxes */
+            display: inline-block; /* Align boxes horizontally */
         }
 
-        .heading {
-            text-align: center; /* Center text horizontally */
+/* Optional: Center text inside each box */
+        .box h2,
+        .box h3 {
+            text-align: center;
         }
-        /* Here's where the code for the switch is...*/
+/* Here's where the code for the switch is...*/
         .switchcontainer {
             display: flex;
             position: absolute; /* Position the container relative to the document */
@@ -74,27 +86,41 @@
     </style>
 </head>
 <body>
-<!--Heres where all the headings go. Reference our design proposal's drawing-->
-<h1 class = "title">Garden Monitor</h1>
-<div class = "headers">
-    <h2 class = "heading">Air Temperature</h2>
-    <h2 class = "heading">Moisture Level</h2>
-    <h2 class = "heading">Light Level</h2>
-</div>
-<!--I'm trying to add a switch here-->
-<span class = switchcontainer>
-<label class="switch">
-    <input type="checkbox">
-    <span class="slider round"></span>
-    </label>
+    <h1 class = "title"> Garden Project</h1>
+
+
+    <span class = "infoboxes">
+    <div class="box">
+        <h2>Temperature (C):</h2>
+        <h3>25</h3>
+      </div>
+      <div class="box">
+        <h2>Soil Temperature (C):</h2>
+        <h3>19</h3>
+      </div>
+      <div class="box">
+        <h2>Brightness:</h2>
+        <h3>Sunny</h3>
+      </div>
+    </span>
+
+
+    <span class = switchcontainer>
     <label class="switch">
         <input type="checkbox">
         <span class="slider round"></span>
+        <p>Switch 1</p>
         </label>
         <label class="switch">
             <input type="checkbox">
             <span class="slider round"></span>
+            <p>Switch 1</p>
             </label>
-        </span>
+            <label class="switch">
+                <input type="checkbox">
+                <span class="slider round"></span>
+                <p>Switch 1</p>
+                </label>
+            </span>
 </body>
 </html>
