@@ -9,7 +9,7 @@ while true:
     adc = thermistor.read_u16()
     Vout = (3.3/65535)*adc #This line converts the adc value from a range from 0-65535 to a range 0 - 3.3
 
-    Moisture = -5*(thermistor.thermistorTemp(Vout)) + 105
+    Moisture = -5*(thermistor.thermistorTemp(Vout)) + 105 #This value gives an approximate conversion of soil temperature to soil moisture 
 
     print(round(Moisture, 1), "%")
 
