@@ -5,7 +5,7 @@ import math
 adcpin = 26
 thermistor = machine.ADC(adcpin)
 
-while true:
+while True:
     adc = thermistor.read_u16()
     Vout = (3.3/65535)*adc #This line converts the adc value from a range from 0-65535 to a range 0 - 3.3
 
