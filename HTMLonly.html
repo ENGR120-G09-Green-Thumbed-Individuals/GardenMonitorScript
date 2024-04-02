@@ -1,100 +1,68 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Garden Project</title>
+<html><head>
+    <title>Pico Web Server</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="data:,">
     <style>
-        /* CSS code for centering the heading */
-
-        .title {
+        html {
+            font-family: Helvetica;
             text-align: center;
+            background-color: #b0b2b2;
         }
-        /* CSS code for layout */
-        .headers {
-            display: flex; /* Create a flex container */
-            justify-content: space-between; /* Distribute space evenly between headings */
+        h1 {
+            color: #0F3376;
+            padding: 2vh;
         }
-
-        .heading {
-            text-align: center; /* Center text horizontally */
+        p {
+            font-size: 1.5rem;
         }
-        /* Here's where the code for the switch is...*/
-        .switchcontainer {
-            display: flex;
-            position: absolute; /* Position the container relative to the document */
-            top: 300px; /* Adjust top position */
-            left: 50%; /* Center the switch horizontally */
-            transform: translateX(-50%); /* Center horizontally */
-        }
-        .switch:nth-child(1) {
-            top: 100px; /* Set the top position of the second object */
-            left: 100px; /* Set the left position of the second object */
-        }
-        .switch:nth-child(2) {
-            top: 150px; /* Set the top position of the second object */
-            left: 40px; /* Set the left position of the second object */
-        }
-        .switch:nth-child(3) {
-            top: 200px; /* Set the top position of the second object */
-            left: -20px; /* Set the left position of the second object */
-        }
-        .switch {
-            position: relative;
+        .button {
             display: inline-block;
-            width: 60px;
-            height: 34px;
-        }
-    
-        .switch input {
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-        .slider {
-            position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-            border-radius: 34px;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            padding: 16px 40px;
+            text-decoration: none;
+            font-size: 30px;
+            margin: 2px;
             cursor: pointer;
-            background-color: #ccc;
-            -webkit-transition: .4s; transition: .4s;
         }
-        .slider:before {
-            position: absolute; height: 26px; width: 26px; left: 4px; bottom: 4px;
-            content: "";
+        .button2 {
+            background-color: #555555;
+        }
+        .circle {
+            width: 20px;
+            height: 20px;
             border-radius: 50%;
-            background-color: white;
-            -webkit-transition: .4s; transition: .4s;
-        }
-        input:checked + .slider {
-            background-color: #2196F3;
-        }
-        input:checked + .slider:before {
-            -webkit-transform: translateX(26px);
-            -ms-transform: translateX(26px);
-            transform: translateX(26px);
+            display: inline-block;
+            margin-left: 10px;
         }
     </style>
-</head>
-<body>
-<!--Heres where all the headings go. Reference our design proposal's drawing-->
-<h1 class = "title">Garden Monitor</h1>
-<div class = "headers">
-    <h2 class = "heading">Air Temperature</h2>
-    <h2 class = "heading">Moisture Level</h2>
-    <h2 class = "heading">Light Level</h2>
-</div>
-<!--I'm trying to add a switch here-->
-<span class = switchcontainer>
-<label class="switch">
-    <input type="checkbox">
-    <span class="slider round"></span>
-    </label>
-    <label class="switch">
-        <input type="checkbox">
-        <span class="slider round"></span>
-        </label>
-        <label class="switch">
-            <input type="checkbox">
-            <span class="slider round"></span>
-            </label>
-        </span>
-</body>
-</html>
+    <script>
+        function updateStatus() {
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    var data = JSON.parse(xhr.responseText);
+                    document.getElementById("irEmitterStatus").innerHTML = data.irEmitterStatus;
+                    var irEmitterColor = data.irEmitterStatus === "ON" ? "purple" : "black";
+                    document.getElementById("irEmitterIndicator").style.backgroundColor = irEmitterColor;
+                    document.getElementById("RedLEDStatus").innerHTML = data.RedLEDStatus;
+                    var buzzerColor = data.RedLEDStatus === "On" ? "red" : "gray";
+                    document.getElementById("buzzerIndicator").style.backgroundColor = buzzerColor;
+                }
+            };
+            xhr.open("GET", "/status", true);
+            xhr.send();
+        }
+        setInterval(updateStatus, 1000); // Refresh every 1 second
+    </script>
+    </head>
+    <body>
+    <h1>IR Detector</h1>
+    <p>IR Emitter: <strong id="irEmitterStatus">""" + ir_emitter_status + """</strong><div class="circle" id="irEmitterIndicator" style="background-color: """ + ir_emitter_color + """;"></div></p>
+    <p>RedLED Status: <strong id="RedLEDStatus">""" + redLED_status + """</strong><div class="circle" id="buzzerIndicator" style="background-color: """ + buzzer_color + """;"></div></p>
+    <p><a href="/?ir_emitter_pin=on"><button class="button">IR Emitter ON</button></a></p>
+    <p><a href="/?ir_emitter_pin=off"><button class="button button2">IR Emitter OFF</button></a></p>
+    </body>
+    </html>

@@ -3,59 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>GardenProject</title>
     <style>
+        /*Title*/
         .title{
             text-align: center;
         }
         /* Here's the code for the info boxes which will have our temps and sunniness */
-        .infoboxes{
+        .infoboxes {
             display: absolute;
-            justify-content: center;
+            justify-content: space-between;
             align-items: flex-start;
-            flex-wrap: wrap; /* Allow items to wrap to the next line */
+            flex-wrap: wrap;  
         }
+
         .box {
             width: 30%; /* Set the width of each box */
-            height: 30%; /* Set the height of each box */
+            height: 150px; /* Set the height of each box */
             background-color: #f0f0f0; /* Set the background color of each box */
             border: 1px solid #ccc; /* Add border for each box */
-            margin-right: 20px; /* Add margin between boxes */
+            margin-right: 5px; /* Add margin between boxes */
+            margin-left: 5px;
+            margin-top: 100px;
             display: inline-block; /* Align boxes horizontally */
         }
 
-/* Optional: Center text inside each box */
+         /*  Center text inside each box */
         .box h2,
         .box h3 {
             text-align: center;
         }
-/* Here's where the code for the switch is...*/
-        .switchcontainer {
-            display: flex;
-            position: absolute; /* Position the container relative to the document */
-            top: 300px; /* Adjust top position */
-            left: 50%; /* Center the switch horizontally */
-            transform: translateX(-50%); /* Center horizontally */
-        }
+
+        /* Here's where the code for the switches are...*/
+        
         .switch:nth-child(1) {
-            top: 100px; /* Set the top position of the second object */
-            left: 100px; /* Set the left position of the second object */
+            top: 50px; /* Set the top position of the second object */
+            left: 0px; /* Set the left position of the second object */
         }
         .switch:nth-child(2) {
-            top: 150px; /* Set the top position of the second object */
-            left: 40px; /* Set the left position of the second object */
+            top: 50px; /* Set the top position of the second object */
+            left: 0px; /* Set the left position of the second object */
         }
         .switch:nth-child(3) {
-            top: 200px; /* Set the top position of the second object */
-            left: -20px; /* Set the left position of the second object */
+            top: 50px; /* Set the top position of the second object */
+            left: 0px; /* Set the left position of the second object */
         }
+
+
+        /* Code for Switches from lab code given */
         .switch {
             position: relative;
             display: inline-block;
             width: 60px;
             height: 34px;
+            
         }
-    
         .switch input {
             opacity: 0;
             width: 0;
@@ -83,44 +85,47 @@
             -ms-transform: translateX(26px);
             transform: translateX(26px);
         }
+
     </style>
 </head>
-<body>
-    <h1 class = "title"> Garden Project</h1>
 
 
+
+    <!--background colour to green-->
+    <body style="background-color:rgb(82, 188, 117);">
+    <h1 class = "title"> Garden Monitor</h1>
+
+
+    <!--Infoboxes container-->
     <span class = "infoboxes">
     <div class="box">
         <h2>Temperature (C):</h2>
         <h3>25</h3>
+        <label class="switch"> <!--Where you see switch is the actuator relating to that particular infobox-->
+            <input type="checkbox">
+            <span class="slider round"></span>
+            <p>Fan</p>
+            </label>
       </div>
       <div class="box">
         <h2>Soil Temperature (C):</h2>
         <h3>19</h3>
+        <label class="switch">
+            <input type="checkbox">
+            <span class="slider round"></span>
+            <p>Irrigation</p>
+            </label>
       </div>
       <div class="box">
         <h2>Brightness:</h2>
         <h3>Sunny</h3>
-      </div>
-    </span>
-
-
-    <span class = switchcontainer>
-    <label class="switch">
-        <input type="checkbox">
-        <span class="slider round"></span>
-        <p>Switch 1</p>
-        </label>
         <label class="switch">
             <input type="checkbox">
             <span class="slider round"></span>
-            <p>Switch 1</p>
+            <p>Lights</p>
             </label>
-            <label class="switch">
-                <input type="checkbox">
-                <span class="slider round"></span>
-                <p>Switch 1</p>
-                </label>
-            </span>
+      </div>
+    </span>
+
 </body>
 </html>
