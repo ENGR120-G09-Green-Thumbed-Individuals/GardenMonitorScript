@@ -1,15 +1,3 @@
-# This is a sample code that demonstrates wireless communication.
-# You are expected to use this code and modify it to suit your project needs.
-
-# ------------------------------------------------------------------------
-# In this project, a red LED is connected to GP14.
-# The red LED is controlled based on the value of a light sensor's output.
-# The light sensor output is connected to GP26 (ADC pin).
-# The red LED status and the value of the red LED pin (GP14) are communicated wirelessly to a server.
-# The status and value are displayed on the webpage. In addition, the user interface has
-# a circle indicating the LED turns color depending upon the status of the physical LED. 
-# ------------------------------------------------------------------------
-
 
 # -----------------------------------------------------------------------
 # The following list of libraries are required. Do not remove any. 
@@ -21,11 +9,6 @@ import _thread
 import json
 import math
 # -------------------------------------------------------------------------
-
-# -------------------------------------------------------------------------
-
-# The below portion of the code is to be tweaked based on your needs. 
-
 adcpin = 27 
 thermistor = machine.ADC(adcpin)
 adcpin2 = 28
